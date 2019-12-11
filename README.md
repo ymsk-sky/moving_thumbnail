@@ -1,24 +1,11 @@
-# app
+# 動くサムネイル
 
-## Project setup
-```
-yarn install
-```
+ニコニコで動くサムネイルが作りたい。
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+# 技術/ツール
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- javascript/html
+- Vue.js/vue-cli
+- Python
+- Selenium
+- OpenCV
