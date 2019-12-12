@@ -5,12 +5,9 @@
       <Movie
         class="grid__item"
         v-for="movie in movies"
-        :key="movie.id"
+        :key="movie.contentId"
         :item="movie"
       />
-    </div>
-    <div class="test">
-      {{ movies }}
     </div>
   </div>
 </template>
@@ -29,24 +26,25 @@ export default {
   },
   methods: {
     async fetchMovies () {
-      // const response = await axios.get('https://api.search.nicovideo.jp/api/v2/video/contents/search', {
-      //   params: {
-      //     'q': 'ゲーム',
-      //     'targets': 'tagsExact',
-      //     'fields': 'contentId,title,viewCounter,mylistCounter,lengthSeconds,thumbnailUrl',
-      //     '_sort': '-viewCounter'
-      //   }
-      // })
-      //
-      // this.movies = response.data.data
-      this.movies = ['test1', 'test2']
+      const response = await this.axios.get('https://api.search.nicovideo.jp/api/v2/video/contents/search', {
+        params: {
+          q: 'ゲーム',
+          targets: 'tagsExact',
+          fields: 'contentId,title,viewCounter,mylistCounter,lengthSeconds,thumbnailUrl',
+          _sort: '-viewCounter'
+        }
+      })
+
+      this.movies = response.data
     }
   },
   watch: {
-    async handler () {
-      await this.fetchMovies()
-    },
-    immediate: true
+    $route: {
+      async handler () {
+        await this.fetchMovies()
+      },
+      immediate: true
+    }
   }
 }
 </script>
