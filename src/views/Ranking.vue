@@ -9,6 +9,14 @@
         :item="movie"
       />
     </div>
+    <div class="test">
+      <h3>movies</h3>
+      {{ movies }}
+    </div>
+    <div class="error">
+      <h3>error log</h3>
+      {{ errorLog }}
+    </div>
   </div>
 </template>
 
@@ -21,21 +29,28 @@ export default {
   },
   data () {
     return {
-      movies: []
+      movies: [],
+      errorLog: []
     }
   },
   methods: {
     async fetchMovies () {
-      const response = await this.axios.get('https://api.search.nicovideo.jp/api/v2/video/contents/search', {
+      await this.axios.get('https://api.search.nicovideo.jp/api/v2/video/contents/search', {
         params: {
           q: 'ゲーム',
           targets: 'tagsExact',
           fields: 'contentId,title,viewCounter,mylistCounter,lengthSeconds,thumbnailUrl',
-          _sort: '-viewCounter'
+          _sort: '-viewCounter',
+          _context: 'testapp'
         }
       })
-
-      this.movies = response.data
+        .then(response => {
+          this.movies = response.data
+        })
+        .catch(error => {
+          this.errorLog = error
+          console.log(error)
+        })
     }
   },
   watch: {
