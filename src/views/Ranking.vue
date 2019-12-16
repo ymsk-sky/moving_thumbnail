@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async fetchMovies () {
-      await this.axios.get('https://api.search.nicovideo.jp/api/v2/video/contents/search', {
+      await this.axios.get('/api', {
         params: {
           q: 'ゲーム',
           targets: 'tagsExact',
