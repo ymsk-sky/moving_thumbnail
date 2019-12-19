@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async fetchMovies () {
-      await this.axios.get('/api', {
+      await this.axios.get('http://localhost/api/ranking', {
         params: {
           q: 'ゲーム',
           targets: 'tagsExact',
