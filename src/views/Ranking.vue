@@ -9,14 +9,6 @@
         :item="movie"
       />
     </div>
-    <div class="test">
-      <h3>movies</h3>
-      {{ movies }}
-    </div>
-    <div class="error">
-      <h3>error log</h3>
-      {{ errorLog }}
-    </div>
   </div>
 </template>
 
@@ -45,7 +37,7 @@ export default {
         }
       })
         .then(response => {
-          this.movies = response.data
+          this.movies = response.data.data
         })
         .catch(error => {
           this.errorLog = error

@@ -1,10 +1,8 @@
 <template>
   <div class="movie">
-    <h3>Movie</h3>
     <div class="title">
-      {{ item.title }}
+      <p>title: {{ item.title }}</p>
     </div>
-    {{ item }}
   </div>
 </template>
 
