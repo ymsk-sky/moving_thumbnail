@@ -1,8 +1,9 @@
 <template>
   <div class="movie">
-    <div class="title">
-      <p>title: {{ item.title }}</p>
-    </div>
+    <h4>{{ item.title }}</h4>
+    <a :href="`https://nico.ms/${item.contentId}`" target="_blank" rel="noopener noreferrer">
+      <img :src="item.thumbnailUrl" :alt="item.title">
+    </a>
   </div>
 </template>
 
